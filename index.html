@@ -2,272 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/nopress.ico" type="image/x-icon">
+    <link rel="icon" href="/Nopress.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nopress</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
-        :root {
-            --bg-color: #fff;
-            --text-color: #333;
-            --accent-color: #444444;
-            --line-color-base: 255, 215, 0;
-            --fade-duration: 2s;
-            --line-duration-base: 20s;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            font-size: 16px;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            overflow: hidden;
-            font-family: 'Work Sans', sans-serif;
-            transition: margin 0.25s cubic-bezier(0, 0, 0.3, 1);
-            margin-left: 0px;
-        }
-        
-        .container {
-            display: flex;
-            width: 100%;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .text {
-            margin-left: 15px;
-            margin-top: 15px;
-            opacity: 0;
-            animation: slideIn 2s 0.5s cubic-bezier(.78, .17, .43, .93) forwards;
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 700;
-            color: var(--text-color);
-            text-transform: lowercase;
-            letter-spacing: -0.02em;
-        }
-        
-        .background-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        
-        .line {
-            position: absolute;
-            background-color: rgba(var(--line-color-base), 0.3);
-            animation: moveLine var(--line-duration-base) infinite linear;
-            will-change: transform;
-            transform: translateZ(0);
-        }
-        
-        .small-caps {
-            font-variant-caps: small-caps;
-            padding-top: 10px;
-            font-size: 11px;
-            color: #9C9983;
-        }
-        
-        .small-caps:hover {
-            color: #9C9983;
-            cursor: pointer;
-        }
-        
-        footer {
-            width: 100%;
-            bottom: 30px;
-            text-align: center;
-            display: flex;
-            position: fixed;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            opacity: 0;
-            animation: slideInUp 2s 0.5s cubic-bezier(.78, .17, .43, .93) forwards;
-        }
-        
-        footer .text-wrapper {
-            position: relative;
-            width: fit-content;
-            margin-top: -1px;
-            font-weight: 400;
-            color: #d8d5c0;
-            font-size: 12px;
-            letter-spacing: 0;
-            line-height: normal;
-        }
-        
-        footer .navbar {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            position: relative;
-            flex: 0 0 auto;
-        }
-        
-        footer .div {
-            position: relative;
-            width: fit-content;
-            margin-top: -1px;
-            font-weight: 700;
-            color: #44412e;
-            font-size: 12px;
-            letter-spacing: 0;
-            line-height: normal;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        footer a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.1s linear 0s;
-            cursor: pointer;
-        }
-        
-        footer a:hover {
-            opacity: 50%;
-            transition: all 0.1s linear 0s;
-            color: var(--accent-color);
-        }
-        
-        footer .ellipse {
-            position: relative;
-            width: 2px;
-            height: 2px;
-            background-color: var(--accent-color);
-            border-radius: 1px;
-        }
-        
-        @keyframes moveLine {
-            0% { transform: translateX(-100%) translateZ(0); }
-            100% { transform: translateX(100vw) translateZ(0); }
-        }
-        
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-120px);
-                opacity: 0;
-            }
-            40% {
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(-5px);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideInUp {
-            0% {
-                transform: translateY(120px);
-                opacity: 0;
-            }
-            40% {
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0px);
-                opacity: 1;
-            }
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            .line {
-                animation-duration: calc(var(--line-duration-base) * 2);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .text {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="background-lines" aria-hidden="true"></div>
+        <div class="background-lines" aria-hidden="true">
+            <!-- load animated lines -->
+            <div class="loading-line"></div>
+            <div class="loading-line"></div>
+            <div class="loading-line"></div>
+            <div class="loading-line"></div>
+
+            <!-- background loop lines -->
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+            <div class="bg-line"></div>
+        </div>
         <div class="text">no press</div>
-        
+
         <footer>
-            <div class="text-wrapper">ABOUT</div>
+            <div class="text-wrapper">CONTACT</div>
             <div class="navbar">
-                <div class="div"><a href="https://blog.moran.im" target="_blank">MORAN</a></div>
+                <div class="div"><a href="https://s.fmoran.me/contact" target="_blank">MORAN</a></div>
             </div>
         </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            createLines();
-        });
-        
-        function createLines() {
-            const container = document.querySelector('.background-lines');
-            const lineCount = Math.min(30, Math.floor(window.innerWidth / 50));
-            const fragment = document.createDocumentFragment();
-            
-            for (let i = 0; i < lineCount; i++) {
-                const line = document.createElement('div');
-                line.classList.add('line');
-                
-                // 随机线条高度
-                const heightVariation = Math.random();
-                const height = heightVariation < 0.7 ? 1 : heightVariation < 0.9 ? Math.random() * 2 + 1 : Math.random() * 4 + 1;
-                line.style.height = `${height}px`;
-                
-                line.style.width = '100%';
-                line.style.top = `${Math.random() * 100}%`;
-                
-                // 随机动画时长
-                const duration = 15 + Math.random() * 20;
-                line.style.animationDuration = `${duration}s`;
-                
-                // 随机延迟
-                line.style.animationDelay = `${Math.random() * 15}s`;
-                
-                // 随机透明度
-                const opacity = 0.1 + Math.random() * 0.3;
-                line.style.backgroundColor = `rgba(var(--line-color-base), ${opacity})`;
-                
-                // 随机旋转
-                if (Math.random() > 0.8) {
-                    const angle = (Math.random() * 5) - 2.5;
-                    line.style.transform = `rotate(${angle}deg) translateZ(0)`;
-                }
-                
-                fragment.appendChild(line);
-            }
-            
-            container.appendChild(fragment);
-        }
-        
-        // 窗口大小变化时重新生成线条
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                const container = document.querySelector('.background-lines');
-                container.innerHTML = '';
-                createLines();
-            }, 250);
-        });
-    </script>
 </body>
 </html>
