@@ -1,1 +1,1 @@
-# [Nopress](https://www.nopress.net)
+# Nopress
